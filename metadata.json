@@ -1,0 +1,6 @@
+{
+  "name": "Smart Canteen",
+  "description": "Digital college canteen ordering platform with live pickup tracking, Cash at Counter checkout, and kitchen administration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
