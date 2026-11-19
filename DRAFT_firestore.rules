@@ -203,7 +203,7 @@ service cloud.firestore {
     // ---------------------------------------------------------
     match /foodItems/{foodId} {
       allow get: if isValidId(foodId);
-      allow list: if existing().name is string;
+      allow list: if !('limit' in request.query) || request.query.limit <= 100;
 
       allow create: if isValidId(foodId)
         && isAdmin()

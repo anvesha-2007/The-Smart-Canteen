@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db, handleFirestoreError, OperationType } from '../firebase';
 import { FoodItem } from '../types';
 import { seedFoodItemsIfEmpty } from '../data/seedMenu';
@@ -19,7 +19,7 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const q = query(collection(db, 'foodItems'), orderBy('name', 'asc'));
+    const q = query(collection(db, 'foodItems'), orderBy('name', 'asc'), limit(100));
 
     const unsubscribe = onSnapshot(
       q,
